@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import "./global.css";
 import React from "react";
+import Header from "../components/Header";
 
 export const metadata: Metadata = {
     title: "Weather Playlist App",
@@ -14,6 +15,7 @@ export default function RootLayout(
     return (
         <html lang="en">
             <body>
+                <Header/>
                 {children}
             </body>
         </html>
