@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Neuropol X';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body{
+    background-image: url('/bgimg.svg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
