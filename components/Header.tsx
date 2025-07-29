@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 
 const myFont=localFont(
     {
-        src:"../public/Neuropol X rg.otf",
+        src:"../public/neuropol-x.otf",
         variable: "--my-custom-font",
         display:"swap",
     }
