@@ -41,33 +41,59 @@ export default async function GeneratePlaylist({ weather }: { weather: WeatherDa
 
     }
 
-    const rawCondition = weather.conditions.toLowerCase();
-    const parsedCondition = Object.keys(playlistCondition).find((key) =>
-        rawCondition.includes(key)
-    );
-
-    const playlistId = playlistCondition[parsedCondition ?? "clear"];
+    const condition = weather.conditions.split(",")[0].toLowerCase().trim();
+    const playlistId = playlistCondition[condition ?? "clear"];
 
     try {
         const playlist = await getPlaylist(playlistId);
 
-        console.log("Raw condition:", rawCondition);
-        console.log("Mapped condition:", parsedCondition);
-        console.log("Selected playlist ID:", playlistId);
+        if (!playlist) {
+            return <p>Couldn&pos;t load playlist. Try again later.</p>;
+        }
+        //console.log("playlist ID:", playlistId);
 
         return (
-            <main>
-                <h1>Spotify Playlist Recommendation</h1>
-                <p>Name: {playlist.name}</p>
-                <p>Owner: {playlist.ownerName}</p>
-                <a href={playlist.spotifyUrl} target="_blank" rel="noopener noreferrer">
-                    Open on Spotify
-                </a>
-                <img src={playlist.imageUrl} alt="Playlist Cover" width={200} />
+            <main className="bg-white/80 rounded-3xl p-6 text-center shadow-lg mx-auto w-[70%] max-w-3xl">
+                <h2 className="text-xl font-semibold mb-6 text-center">Spotify Playlist Recommendation</h2>
+
+                <div className="flex flex-col items-center gap-4 opacity-100">
+                    <img
+                        src={playlist.imageUrl}
+                        alt="playlist image"
+                        className="w-40 h-40 rounded-lg object-cover"
+                    />
+
+                    <div className="flex flex-col text-center">
+                        <div className="mb-4">
+                            <p className="text-sm text-gray-700">
+                                <span className="font-semibold">Playlist name:</span> {playlist.name}
+                            </p>
+                            <p className="text-sm text-gray-700">
+                                <span className="font-semibold">Owner:</span> {playlist.ownerName}
+                            </p>
+                        </div>
+
+                        <a
+                            href={playlist.spotifyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center px-5 py-2 text-white bg-green-500 hover:bg-green-400 rounded-full shadow-md gap-2 duration-200"
+                        >
+                            Open in Spotify
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 fill="none" viewBox="0 0 24 24"
+                                 strokeWidth="1.5"
+                                 stroke="currentColor" className="size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round"
+                                      d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </main>
         );
     } catch (error) {
         console.error("Playlist fetch failed:", error);
-        return <p>Sorry, couldn&pos;t load the playlist. Try again later.</p>;
+        return <p>Couldn&pos;t load playlist. Try again later.</p>;
     }
 }

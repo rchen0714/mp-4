@@ -6,7 +6,7 @@ import Link from "next/link";
 export default async function CityWeather({city}: { city: string }) {
     const data = await getForecast(city);
 
-    // console.log(data);
+    console.log(data);
 
     if (!data) {
         return (
@@ -14,31 +14,35 @@ export default async function CityWeather({city}: { city: string }) {
                 <div>
                     {data === undefined ? (
                         <>
-                            <p>
-                                There&apos;s no weather information for{" "} please enter a valid city name.
-                            </p>
-                            <div>
-                                <Link
-                                    href={`/`}
-                                    className="block w-full text-white bg-green-500 hover:bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                >
-                                    Back
-                                </Link>
+                            <div className="bg-white/80 rounded-3xl p-6 text-center shadow-lg mx-auto w-[70%] max-w-3xl">
+                                <p className="mb-5">
+                                    There&apos;s no weather information for{" "} please enter a valid city name.
+                                </p>
+                                <div>
+                                    <Link
+                                        href={`/`}
+                                        className="inline-flex items-center text-white bg-green-500 hover:bg-green-400 font-medium rounded-full text-sm px-10 py-2.5 text-center shadow-md"
+                                    >
+                                        Back
+                                    </Link>
+                                </div>
                             </div>
                         </>
                     ) : (
                         <>
-                            <p>
-                                Something went wrong while calling API for weather data. Please
-                                try again later.
-                            </p>
-                            <div>
-                                <Link
-                                    href={`/`}
-                                    className="block w-full text-white bg-green-500 hover:bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                >
-                                    Back
-                                </Link>
+                            <div className="bg-white/80 rounded-3xl p-6 text-center shadow-lg mx-auto w-[70%] max-w-3xl">
+                                <p className="mb-5">
+                                    Something went wrong while calling API for weather data. Please
+                                    try again later.
+                                </p>
+                                <div>
+                                    <Link
+                                        href={`/`}
+                                        className="inline-flex items-center text-white bg-green-500 hover:bg-green-400 font-medium rounded-full text-sm px-10 py-2.5 text-center shadow-md"
+                                    >
+                                        Back
+                                    </Link>
+                                </div>
                             </div>
                         </>
                     )}
@@ -50,19 +54,13 @@ export default async function CityWeather({city}: { city: string }) {
     return (
         <main>
             <div>
-                <header>
-                    <div>
-                        <h2>Weather in {data.location}</h2>
-                        <div/>
-                    </div>
-                    <p>Current conditions and 7-day forecast</p>
-                </header>
-                <div>
+                <div className= "mb-10">
+                    <h3 className="text-white text-xl font-semibold mb-6 text-center drop-shadow-md">{data.location}</h3>
                     <TodaysWeather weather={data.forecast[0]}/>
                 </div>
 
-                <h3>Generate Today&apos;s Playlist</h3>
-                <div>
+                <div className= "mt-10">
+                    <h3 className="text-white text-xl font-semibold mb-6 text-center drop-shadow-md">Today&apos;s Weather Playlist</h3>
                     <GeneratePlaylist weather={data.forecast[0]}/>
                 </div>
             </div>

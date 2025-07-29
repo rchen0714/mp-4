@@ -5,13 +5,16 @@ export interface WeatherDayProps {
     sunrise: number;
     sunset: number;
 
-    temperature: number;
-    temperaturemax: number;
-    temperaturemin: number;
+    temp: number;
+    tempmax: number;
+    tempmin: number;
 
-    feelslikemax: number;
-    feelslikemin: number;
     feelslike: number;
+
+    humidity: number;
+    precipitation: number;
+    uvindex: number;
+    windspeed: number;
 
     conditions: string;
     description: string;

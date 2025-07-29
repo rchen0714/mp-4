@@ -22,7 +22,7 @@ export default function Home(){
                     <div className="space-y-5 mb-5">
                         <h1 className="mt5 mb-5 text-center text-3xl font-bold text-white">Let the weather set your Daylist.</h1>
                         <p className="text-white text-center mb-10">Enter a city name to get the weather and a playlist to match the mood!  </p>
-                        <label htmlFor="city" className="block font-medium text-white">
+                        <label htmlFor="city" className=" font-medium text-white">
                             City Name
                         </label>
                         <input
@@ -30,7 +30,7 @@ export default function Home(){
                             placeholder="e.g. Boston, Tokyo, Shanghai"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
-                            className="w-full p-2 rounded-xl bg-white opacity-90"
+                            className="w-full p-2 rounded-xl bg-white opacity-90 mt-2"
                         />
                     </div>
                     <div className="flex justify-center">
