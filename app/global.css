@@ -8,7 +8,7 @@
 }
 
 body{
-    background-image: url('/bgimg.svg');
+    background-image: url("../public/bgimg.svg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;

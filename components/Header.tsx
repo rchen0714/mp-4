@@ -15,7 +15,7 @@ export default function Header() {
             <div className="p-10">
                 <h3 className="text-white text-xl drop-shadow-gray-950">Welcome to</h3>
                 <Link href="/" >
-                    <h2 className="text-green-500 text-3xl font-semibold drop-shadow-md">MoodCast</h2>
+                    <h2 className="text-green-500 text-xl font-semibold drop-shadow-md">MoodCast</h2>
                 </Link>
             </div>
         </header>
