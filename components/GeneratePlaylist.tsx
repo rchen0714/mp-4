@@ -4,6 +4,10 @@ import {WeatherDayProps} from "@/types";
 export default async function GeneratePlaylist({ weather }: { weather: WeatherDayProps }) {
 
     const playlistCondition: Record<string, string> = {
+
+        //These are all playlist ID of some playlists
+        //I chose for each weather
+
         clear: "2RTmyxpcu6aOyd9AqukEYe",
         sunny: "2RTmyxpcu6aOyd9AqukEYe",
         "mostly sunny": "2RTmyxpcu6aOyd9AqukEYe",

@@ -1,8 +1,7 @@
 import { WeatherDayProps } from "@/types";
 
-export default function TodaysWeather({
-                                           weather,
-                                       }: {
+export default function TodaysWeather({weather,}:
+{
     weather: WeatherDayProps;
 }) {
     return (
